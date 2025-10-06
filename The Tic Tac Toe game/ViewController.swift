@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        view.setGradientBackground(colors: [UIColor.lightGray.withAlphaComponent(0.8), UIColor.lightGray.withAlphaComponent(0.4)])
+        
         for button in buttons {
             button.titleLabel?.font = .systemFont(ofSize: 100, weight: .bold)
             button.layer.borderWidth = 2

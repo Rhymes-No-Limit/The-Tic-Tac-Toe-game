@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eFe-N1-659">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -16,12 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Крестики-Нолики" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XP9-9C-vKN">
-                                <rect key="frame" x="81.666666666666686" y="128" width="230" height="33.666666666666657"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Ap4-7C-hfO">
                                 <rect key="frame" x="113.00000000000001" y="324.66666666666669" width="167.33333333333337" height="203.00000000000006"/>
                                 <subviews>
@@ -34,7 +29,7 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="newGameTapped:" destination="eFe-N1-659" eventType="touchUpInside" id="gvw-s9-oIP"/>
-                                            <segue destination="xYY-Jk-3VK" kind="presentation" identifier="showNewGame" modalPresentationStyle="fullScreen" id="lD2-rb-Znv"/>
+                                            <segue destination="xYY-Jk-3VK" kind="presentation" identifier="showNewGame" animates="NO" modalPresentationStyle="fullScreen" id="lD2-rb-Znv"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSd-2Y-dou">
@@ -63,11 +58,9 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wsv-0V-YkR"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ap4-7C-hfO" firstAttribute="centerY" secondItem="pfG-Y1-JII" secondAttribute="centerY" id="6un-UX-1kh"/>
-                            <constraint firstItem="XP9-9C-vKN" firstAttribute="top" secondItem="wsv-0V-YkR" secondAttribute="top" constant="10" id="Eed-0c-xMc"/>
-                            <constraint firstItem="XP9-9C-vKN" firstAttribute="centerX" secondItem="pfG-Y1-JII" secondAttribute="centerX" id="gQ1-HB-ua2"/>
                             <constraint firstItem="Ap4-7C-hfO" firstAttribute="centerX" secondItem="pfG-Y1-JII" secondAttribute="centerX" id="kmY-VF-3Ll"/>
                         </constraints>
                     </view>
@@ -101,7 +94,7 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Начать игру"/>
                                 <connections>
                                     <action selector="startGameTapped:" destination="xYY-Jk-3VK" eventType="touchUpInside" id="xtn-sS-6hW"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="showGameFromNewGame" modalPresentationStyle="fullScreen" id="gHE-dr-rOS"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="showGameFromNewGame" animates="NO" modalPresentationStyle="fullScreen" id="gHE-dr-rOS"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6a1-UX-69m">
@@ -275,6 +268,9 @@
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
