@@ -31,7 +31,7 @@ class NewGameViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showGameFromNewGame" {
-            if let gameVC = segue.destination as? gameViewController {
+            if let gameVC = segue.destination as? GameViewController {
                 let playerName = nameTextField.text ?? "Игрок"
                 let modeIndex = modeSegment.selectedSegmentIndex
                 

@@ -1,6 +1,6 @@
 import UIKit
 
-class gameViewController: UIViewController {
+class GameViewController: UIViewController {
     
     // MARK: - Outlets
     
@@ -9,6 +9,7 @@ class gameViewController: UIViewController {
     // MARK: - Properties
     
     var currentPlayer = "X"
+    var game = GameModel()
     
     // MARK: - lifecycle
     
@@ -34,10 +35,25 @@ class gameViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func buttonTapped(_ sender: UIButton) {
-        sender.setTitle(currentPlayer, for: .normal)
+        let index = sender.tag
+        
+        game.makeMove(at: index)
+        sender.setTitle(game.board[index], for: .normal)
         sender.isEnabled = false
         
-        
-        currentPlayer = currentPlayer == "X" ? "O" : "X"
+        if let winner = game.checkWinner() {
+            showWinnerAlert(winner)
+        }
+    }
+    
+    private func showWinnerAlert(_ winner: String) {
+        let alert = UIAlertController(title: "Победа!", message: "\(winner) победил!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Новая игра", style: .default) { [weak self] _ in self?.resetGame()})
+        present(alert, animated: true)
+    }
+    
+    private func resetGame() {
+        game = GameModel()
+        buttons.forEach { $0.setTitle("", for: .normal); $0.isEnabled = true }
     }
 }
