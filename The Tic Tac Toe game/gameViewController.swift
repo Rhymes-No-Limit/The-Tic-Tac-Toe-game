@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class gameViewController: UIViewController {
     
     // MARK: - Outlets
     
