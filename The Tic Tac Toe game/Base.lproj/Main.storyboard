@@ -8,31 +8,84 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main Menu View Controller-->
         <scene sceneID="swA-nM-Gvf">
             <objects>
-                <viewController id="eFe-N1-659" sceneMemberID="viewController">
+                <viewController id="eFe-N1-659" customClass="MainMenuViewController" customModule="The_Tic_Tac_Toe_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pfG-Y1-JII">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Крестики-Нолики" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XP9-9C-vKN">
+                                <rect key="frame" x="81.666666666666686" y="128" width="230" height="33.666666666666657"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Ap4-7C-hfO">
+                                <rect key="frame" x="113.00000000000001" y="324.66666666666669" width="167.33333333333337" height="203.00000000000006"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cuL-nr-SeD">
+                                        <rect key="frame" x="0.0" y="0.0" width="167.33333333333334" height="47.666666666666664"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Новая игра">
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                            <color key="baseForegroundColor" systemColor="labelColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="newGameTapped:" destination="eFe-N1-659" eventType="touchUpInside" id="gvw-s9-oIP"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="showGame" id="kIg-cI-XhB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSd-2Y-dou">
+                                        <rect key="frame" x="0.0" y="77.666666666666629" width="167.33333333333334" height="47.666666666666657"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Настройки">
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                            <color key="baseForegroundColor" systemColor="labelColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="settings:" destination="eFe-N1-659" eventType="touchUpInside" id="dht-Ba-QRd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lz-gc-Z4C">
+                                        <rect key="frame" x="0.0" y="155.33333333333331" width="167.33333333333334" height="47.666666666666657"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Выход">
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                            <color key="baseForegroundColor" systemColor="labelColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="exitTapped:" destination="eFe-N1-659" eventType="touchUpInside" id="t1w-Iu-vhI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="wsv-0V-YkR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ap4-7C-hfO" firstAttribute="centerY" secondItem="pfG-Y1-JII" secondAttribute="centerY" id="6un-UX-1kh"/>
+                            <constraint firstItem="XP9-9C-vKN" firstAttribute="top" secondItem="wsv-0V-YkR" secondAttribute="top" constant="10" id="Eed-0c-xMc"/>
+                            <constraint firstItem="XP9-9C-vKN" firstAttribute="centerX" secondItem="pfG-Y1-JII" secondAttribute="centerX" id="gQ1-HB-ua2"/>
+                            <constraint firstItem="Ap4-7C-hfO" firstAttribute="centerX" secondItem="pfG-Y1-JII" secondAttribute="centerX" id="kmY-VF-3Ll"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxK-ZC-JVZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-569" y="-2"/>
+            <point key="canvasLocation" x="-570.2290076335878" y="-2.1126760563380285"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="The_Tic_Tac_Toe_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YVU-5U-1Qf">
-                                <rect key="frame" x="46.666666666666657" y="276" width="300" height="300"/>
+                                <rect key="frame" x="46.666666666666657" y="241.66666666666663" width="300" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3oF-G5-eFH">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
@@ -64,7 +117,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Zqj-Fh-PZC">
-                                        <rect key="frame" x="0.0" y="100" width="300" height="100"/>
+                                        <rect key="frame" x="0.0" y="100.00000000000003" width="300" height="100"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oje-cK-dm3">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -93,7 +146,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QY7-rB-q3N">
-                                        <rect key="frame" x="0.0" y="200" width="300" height="100"/>
+                                        <rect key="frame" x="0.0" y="200.00000000000003" width="300" height="99.999999999999972"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0IN-JV-G7H">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -136,6 +189,7 @@
                             <constraint firstItem="YVU-5U-1Qf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KaF-z7-aRh"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Fl3-di-W0V"/>
                     <connections>
                         <outletCollection property="buttons" destination="DDX-Q8-43g" collectionClass="NSMutableArray" id="MlA-Om-bN9"/>
                         <outletCollection property="buttons" destination="Zf6-F5-cH3" collectionClass="NSMutableArray" id="Ecg-X0-C2l"/>
@@ -154,6 +208,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
