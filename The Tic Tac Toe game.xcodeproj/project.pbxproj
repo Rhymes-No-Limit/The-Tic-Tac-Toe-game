@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F3CBA3542E93C28400347635 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CBA3532E93C28400347635 /* MainMenuViewController.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		F3CBA3392E893EBB00347635 /* The Tic Tac Toe game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Tic Tac Toe game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3CBA3532E93C28400347635 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +50,7 @@
 		F3CBA3302E893EBB00347635 = {
 			isa = PBXGroup;
 			children = (
+				F3CBA3532E93C28400347635 /* MainMenuViewController.swift */,
 				F3CBA33B2E893EBB00347635 /* The Tic Tac Toe game */,
 				F3CBA33A2E893EBB00347635 /* Products */,
 			);
@@ -132,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3CBA3542E93C28400347635 /* MainMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
