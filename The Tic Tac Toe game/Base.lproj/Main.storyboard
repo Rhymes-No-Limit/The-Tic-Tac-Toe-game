@@ -34,7 +34,7 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="newGameTapped:" destination="eFe-N1-659" eventType="touchUpInside" id="gvw-s9-oIP"/>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="showGame" id="kIg-cI-XhB"/>
+                                            <segue destination="xYY-Jk-3VK" kind="presentation" identifier="showNewGame" modalPresentationStyle="fullScreen" id="lD2-rb-Znv"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSd-2Y-dou">
@@ -76,16 +76,78 @@
             </objects>
             <point key="canvasLocation" x="-570.2290076335878" y="-2.1126760563380285"/>
         </scene>
+        <!--New Game View Controller-->
+        <scene sceneID="Uuo-uq-OMJ">
+            <objects>
+                <viewController id="xYY-Jk-3VK" customClass="NewGameViewController" customModule="The_Tic_Tac_Toe_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gqv-P4-vxE">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Новая игра" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBN-Xj-hEL">
+                                <rect key="frame" x="109.66666666666669" y="74" width="174" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите имя игрока" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HbR-Da-oAt">
+                                <rect key="frame" x="16" y="315" width="361" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTP-Kl-Mef">
+                                <rect key="frame" x="136" y="793" width="121" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Начать игру"/>
+                                <connections>
+                                    <action selector="startGameTapped:" destination="xYY-Jk-3VK" eventType="touchUpInside" id="xtn-sS-6hW"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="showGameFromNewGame" modalPresentationStyle="fullScreen" id="gHE-dr-rOS"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6a1-UX-69m">
+                                <rect key="frame" x="82" y="676" width="229" height="32"/>
+                                <segments>
+                                    <segment title="Против игрока"/>
+                                    <segment title="Против бота"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RWj-Ut-xMr"/>
+                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                        <constraints>
+                            <constraint firstItem="RWj-Ut-xMr" firstAttribute="trailing" secondItem="HbR-Da-oAt" secondAttribute="trailing" constant="16" id="1mc-D4-mzi"/>
+                            <constraint firstItem="fBN-Xj-hEL" firstAttribute="centerX" secondItem="gqv-P4-vxE" secondAttribute="centerX" id="34M-XH-xac"/>
+                            <constraint firstItem="VTP-Kl-Mef" firstAttribute="bottom" secondItem="RWj-Ut-xMr" secondAttribute="bottom" constant="10" id="7UR-zz-gZU"/>
+                            <constraint firstItem="HbR-Da-oAt" firstAttribute="leading" secondItem="RWj-Ut-xMr" secondAttribute="leading" constant="16" id="8oK-c1-MLj"/>
+                            <constraint firstItem="HbR-Da-oAt" firstAttribute="top" secondItem="fBN-Xj-hEL" secondAttribute="bottom" constant="200" id="Epi-Ww-xJR"/>
+                            <constraint firstItem="fBN-Xj-hEL" firstAttribute="top" secondItem="RWj-Ut-xMr" secondAttribute="top" constant="15" id="TY5-iU-XC7"/>
+                            <constraint firstItem="HbR-Da-oAt" firstAttribute="centerX" secondItem="gqv-P4-vxE" secondAttribute="centerX" id="UQU-IU-774"/>
+                            <constraint firstItem="VTP-Kl-Mef" firstAttribute="top" secondItem="6a1-UX-69m" secondAttribute="bottom" constant="86" id="cnD-Db-94N"/>
+                            <constraint firstItem="6a1-UX-69m" firstAttribute="centerX" secondItem="gqv-P4-vxE" secondAttribute="centerX" id="jsa-RN-IJD"/>
+                            <constraint firstItem="RWj-Ut-xMr" firstAttribute="trailing" secondItem="VTP-Kl-Mef" secondAttribute="trailing" constant="136" id="wVY-sR-hwb"/>
+                            <constraint firstItem="VTP-Kl-Mef" firstAttribute="leading" secondItem="RWj-Ut-xMr" secondAttribute="leading" constant="136" id="zLb-WA-KBO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ht6-lF-5LT"/>
+                    <connections>
+                        <outlet property="modeSegment" destination="6a1-UX-69m" id="HGb-VZ-CeJ"/>
+                        <outlet property="nameTextField" destination="HbR-Da-oAt" id="mei-Wu-R7X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mwq-hy-kNZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-567.17557251908397" y="680.98591549295782"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="The_Tic_Tac_Toe_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YVU-5U-1Qf">
-                                <rect key="frame" x="46.666666666666657" y="241.66666666666663" width="300" height="300"/>
+                                <rect key="frame" x="46.666666666666657" y="276" width="300" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3oF-G5-eFH">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
@@ -117,7 +179,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Zqj-Fh-PZC">
-                                        <rect key="frame" x="0.0" y="100.00000000000003" width="300" height="100"/>
+                                        <rect key="frame" x="0.0" y="100" width="300" height="100"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oje-cK-dm3">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -146,7 +208,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QY7-rB-q3N">
-                                        <rect key="frame" x="0.0" y="200.00000000000003" width="300" height="99.999999999999972"/>
+                                        <rect key="frame" x="0.0" y="200" width="300" height="100"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0IN-JV-G7H">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>

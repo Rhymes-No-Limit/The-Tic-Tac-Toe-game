@@ -8,7 +8,7 @@ class MainMenuViewController: UIViewController {
 
     }
     @IBAction func newGameTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "newGame", sender: self)
+        performSegue(withIdentifier: "showNewGame", sender: self)
     }
     
     @IBAction func settings(_ sender: UIButton) {
