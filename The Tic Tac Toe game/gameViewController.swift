@@ -7,6 +7,7 @@ class GameViewController: UIViewController {
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet var xScoreLabel: UILabel!
     @IBOutlet var oScoreLabel: UILabel!
+    @IBOutlet var timerLabel: UILabel!
     
     // MARK: - Properties
     
@@ -14,11 +15,15 @@ class GameViewController: UIViewController {
     var game = GameModel()
     var xScore = 0
     var oScore = 0
+    var turnTimer: Timer?
+    var remainingTime = 10
     
     // MARK: - lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        startTurnTimer()
         
     }
     
@@ -39,6 +44,9 @@ class GameViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func buttonTapped(_ sender: UIButton) {
+        
+        startTurnTimer()
+        
         let index = sender.tag
         
         game.makeMove(at: index)
@@ -53,6 +61,8 @@ class GameViewController: UIViewController {
             showDrawAlert()
         }
     }
+    
+    // MARK: - Start game
     
     private func showWinnerAlert(_ winner: String) {
         if winner == "X" {
@@ -79,8 +89,34 @@ class GameViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    // MARK: - Score
+    
     private func updateScoreLabels() {
         xScoreLabel.text = "X: \(xScore)"
         oScoreLabel.text = "O: \(oScore)"
+    }
+    
+    // MARK: - Timer
+    
+    private func startTurnTimer() {
+        turnTimer?.invalidate()
+        remainingTime = 10
+        timerLabel.text = "Осталось: \(remainingTime)"
+        
+        turnTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            guard let self = self else { return }
+            
+            self.remainingTime -= 1
+            self.timerLabel.text = "Осталось: \(self.remainingTime)"
+            
+            if self.remainingTime == 0 {
+                timer.invalidate()
+                self.switchTurnDueToTimer()
+            }
+        }
+    }
+    private func switchTurnDueToTimer() {
+        game.currentPlayer = game.currentPlayer == "X" ? "O" : "X"
+        startTurnTimer()
     }
 }

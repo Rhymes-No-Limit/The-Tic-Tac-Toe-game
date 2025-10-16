@@ -243,22 +243,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Zby-sF-AQZ">
-                                <rect key="frame" x="102" y="110" width="94.333333333333314" height="70"/>
+                                <rect key="frame" x="102" y="110" width="37" height="70"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Игрок 1: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIT-Zu-m8K">
-                                        <rect key="frame" x="0.0" y="0.0" width="94.333333333333329" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIT-Zu-m8K">
+                                        <rect key="frame" x="0.0" y="0.0" width="37" height="24"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Игрок 2: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4s-L6-DmL">
-                                        <rect key="frame" x="0.0" y="46" width="94.333333333333329" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4s-L6-DmL">
+                                        <rect key="frame" x="0.0" y="46" width="37" height="24"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Время: 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zls-4h-W8p">
+                                <rect key="frame" x="147.33333333333334" y="217" width="98.333333333333343" height="26.333333333333343"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -268,12 +274,15 @@
                             <constraint firstItem="YVU-5U-1Qf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="KEV-J2-hNq"/>
                             <constraint firstItem="YVU-5U-1Qf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KaF-z7-aRh"/>
                             <constraint firstItem="Zby-sF-AQZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="102" id="LfK-wj-uYx"/>
+                            <constraint firstItem="zls-4h-W8p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N5s-af-eVo"/>
                             <constraint firstItem="Zby-sF-AQZ" firstAttribute="top" secondItem="ZgR-d4-9El" secondAttribute="bottom" constant="7.3300000000000001" id="emA-AO-8Ac"/>
+                            <constraint firstItem="zls-4h-W8p" firstAttribute="top" secondItem="Zby-sF-AQZ" secondAttribute="bottom" constant="37" id="oh4-Cu-Vvo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Fl3-di-W0V"/>
                     <connections>
                         <outlet property="oScoreLabel" destination="y4s-L6-DmL" id="Cfg-oO-J8b"/>
+                        <outlet property="timerLabel" destination="zls-4h-W8p" id="W8V-5v-Rql"/>
                         <outlet property="xScoreLabel" destination="JIT-Zu-m8K" id="Iwu-oX-S6D"/>
                         <outletCollection property="buttons" destination="DDX-Q8-43g" collectionClass="NSMutableArray" id="MlA-Om-bN9"/>
                         <outletCollection property="buttons" destination="Zf6-F5-cH3" collectionClass="NSMutableArray" id="Ecg-X0-C2l"/>
@@ -296,10 +305,10 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
