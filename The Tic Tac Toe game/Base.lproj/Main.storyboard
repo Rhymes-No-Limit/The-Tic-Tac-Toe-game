@@ -236,16 +236,45 @@
                                     <constraint firstAttribute="width" constant="300" id="g3F-t9-rIU"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Счет" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgR-d4-9El">
+                                <rect key="frame" x="165.66666666666666" y="69" width="62" height="33.666666666666657"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Zby-sF-AQZ">
+                                <rect key="frame" x="102" y="110" width="94.333333333333314" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Игрок 1: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIT-Zu-m8K">
+                                        <rect key="frame" x="0.0" y="0.0" width="94.333333333333329" height="24"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Игрок 2: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4s-L6-DmL">
+                                        <rect key="frame" x="0.0" y="46" width="94.333333333333329" height="24"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ZgR-d4-9El" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fpl-Kw-tAw"/>
+                            <constraint firstItem="ZgR-d4-9El" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="IMN-gp-GYE"/>
                             <constraint firstItem="YVU-5U-1Qf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="KEV-J2-hNq"/>
                             <constraint firstItem="YVU-5U-1Qf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KaF-z7-aRh"/>
+                            <constraint firstItem="Zby-sF-AQZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="102" id="LfK-wj-uYx"/>
+                            <constraint firstItem="Zby-sF-AQZ" firstAttribute="top" secondItem="ZgR-d4-9El" secondAttribute="bottom" constant="7.3300000000000001" id="emA-AO-8Ac"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Fl3-di-W0V"/>
                     <connections>
+                        <outlet property="oScoreLabel" destination="y4s-L6-DmL" id="Cfg-oO-J8b"/>
+                        <outlet property="xScoreLabel" destination="JIT-Zu-m8K" id="Iwu-oX-S6D"/>
                         <outletCollection property="buttons" destination="DDX-Q8-43g" collectionClass="NSMutableArray" id="MlA-Om-bN9"/>
                         <outletCollection property="buttons" destination="Zf6-F5-cH3" collectionClass="NSMutableArray" id="Ecg-X0-C2l"/>
                         <outletCollection property="buttons" destination="41h-VT-sLo" collectionClass="NSMutableArray" id="GYJ-yg-JhP"/>
