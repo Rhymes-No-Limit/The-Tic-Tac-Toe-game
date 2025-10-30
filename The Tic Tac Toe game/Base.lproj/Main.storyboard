@@ -265,6 +265,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twV-UK-rXB">
+                                <rect key="frame" x="159" y="598" width="75" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="resetGameTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ERz-PD-uR5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Az0-dD-TAl">
+                                <rect key="frame" x="16" y="190" width="361" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -275,12 +289,19 @@
                             <constraint firstItem="YVU-5U-1Qf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KaF-z7-aRh"/>
                             <constraint firstItem="Zby-sF-AQZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="102" id="LfK-wj-uYx"/>
                             <constraint firstItem="zls-4h-W8p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N5s-af-eVo"/>
+                            <constraint firstItem="twV-UK-rXB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xmp-Nb-qXk"/>
+                            <constraint firstItem="Az0-dD-TAl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ds6-Qb-WJV"/>
                             <constraint firstItem="Zby-sF-AQZ" firstAttribute="top" secondItem="ZgR-d4-9El" secondAttribute="bottom" constant="7.3300000000000001" id="emA-AO-8Ac"/>
+                            <constraint firstItem="Az0-dD-TAl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mzK-yw-fa6"/>
                             <constraint firstItem="zls-4h-W8p" firstAttribute="top" secondItem="Zby-sF-AQZ" secondAttribute="bottom" constant="37" id="oh4-Cu-Vvo"/>
+                            <constraint firstItem="Az0-dD-TAl" firstAttribute="top" secondItem="Zby-sF-AQZ" secondAttribute="bottom" constant="10" id="uvF-nD-ytV"/>
+                            <constraint firstItem="twV-UK-rXB" firstAttribute="top" secondItem="YVU-5U-1Qf" secondAttribute="bottom" constant="22" id="wr7-pN-Wzb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Az0-dD-TAl" secondAttribute="trailing" constant="16" id="xxT-5N-MMz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Fl3-di-W0V"/>
                     <connections>
+                        <outlet property="currentPlayerLabel" destination="Az0-dD-TAl" id="5up-p9-Coi"/>
                         <outlet property="oScoreLabel" destination="y4s-L6-DmL" id="Cfg-oO-J8b"/>
                         <outlet property="timerLabel" destination="zls-4h-W8p" id="W8V-5v-Rql"/>
                         <outlet property="xScoreLabel" destination="JIT-Zu-m8K" id="Iwu-oX-S6D"/>

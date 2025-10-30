@@ -8,6 +8,7 @@ class GameViewController: UIViewController {
     @IBOutlet var xScoreLabel: UILabel!
     @IBOutlet var oScoreLabel: UILabel!
     @IBOutlet var timerLabel: UILabel!
+    @IBOutlet var currentPlayerLabel: UILabel!
     
     // MARK: - Properties
     
@@ -17,25 +18,33 @@ class GameViewController: UIViewController {
     var oScore = 0
     var turnTimer: Timer?
     var remainingTime = 10
+    var playerName: String?
+    var isPlayingWithBot: Bool = false
     
     // MARK: - lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         startTurnTimer()
+        updateCurrentPlayerLabel()
         
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         setupUI()
+        updateScoreLabels()
         
     }
     
     
     // MARK: - Actions
     
+    @IBAction func resetGameTapped(_ sender: UIButton) {
+        resetGame()
+        updateCurrentPlayerLabel()
+        
+    }
     @IBAction func buttonTapped(_ sender: UIButton) {
         
         //startTurnTimer()
@@ -61,7 +70,7 @@ class GameViewController: UIViewController {
             showDrawAlert()
             return
         }
-        
+        updateCurrentPlayerLabel()
         startTurnTimer()
     }
     
@@ -145,8 +154,22 @@ class GameViewController: UIViewController {
     }
     
     private func updateScoreLabels() {
-        xScoreLabel.text = "X: \(xScore)"
-        oScoreLabel.text = "O: \(oScore)"
+        let playerDisplayName = playerName ?? "Игрок"
+        let opponentName = isPlayingWithBot ? "Бот" : "Игрок 2"
+        
+        xScoreLabel.text = "\(playerDisplayName): \(xScore)"
+        oScoreLabel.text = "\(opponentName): \(oScore)"
+    }
+    
+    private func updateCurrentPlayerLabel() {
+        let playerDisplayName = playerName ?? "Игрок"
+        let opponentName = isPlayingWithBot ? "Бот" : "Игрок 2"
+        
+        if game.currentPlayer == "X" {
+            currentPlayerLabel.text = "Ход: \(playerDisplayName)"
+        } else {
+            currentPlayerLabel.text = "Ход: \(opponentName)"
+        }
     }
 
 }

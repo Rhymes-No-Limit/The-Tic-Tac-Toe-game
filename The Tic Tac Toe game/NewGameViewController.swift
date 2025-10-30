@@ -1,6 +1,6 @@
 import UIKit
 
-class NewGameViewController: UIViewController {
+final class NewGameViewController: UIViewController {
 
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var modeSegment: UISegmentedControl!
@@ -30,19 +30,22 @@ class NewGameViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showGameFromNewGame" {
-            if let gameVC = segue.destination as? GameViewController {
-                let playerName = nameTextField.text ?? "Игрок"
-                let modeIndex = modeSegment.selectedSegmentIndex
+        if segue.identifier == "showGameFromNewGame",
+             let gameVC = segue.destination as? GameViewController {
                 
-                gameVC.title = "\(playerName) vs \(modeIndex == 0 ? "Игрок" : "Бот")"
+            let trimmedName = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+            gameVC.playerName = trimmedName.isEmpty ? "Игрок" : trimmedName
+            gameVC.isPlayingWithBot = modeSegment.selectedSegmentIndex == 1
+            
+            gameVC.title = "\(gameVC.playerName!) vc \(gameVC.isPlayingWithBot ? "Бот" : "Игрок 2")"
+            
                 
-            }
+            
         }
     }
     
     @IBAction func startGameTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "showGameFromNewGame", sender: nil)
+        performSegue(withIdentifier: "showGameFromNewGame", sender: self)
     }
     
     @objc private func backToMenu() {
