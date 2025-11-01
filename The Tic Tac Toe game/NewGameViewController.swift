@@ -4,9 +4,12 @@ final class NewGameViewController: UIViewController {
 
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var modeSegment: UISegmentedControl!
+    @IBOutlet var opponentNameTextField: UITextField!
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        opponentNameTextField.isHidden = modeSegment.selectedSegmentIndex == 1
         
         view.setGradientBackground(colors: [UIColor.lightGray.withAlphaComponent(0.8), UIColor.lightGray.withAlphaComponent(0.4)])
         
@@ -29,6 +32,41 @@ final class NewGameViewController: UIViewController {
         
     }
     
+
+    
+    @IBAction func startGameTapped(_ sender: UIButton) {
+        guard let name = nameTextField.text, !name.trimmingCharacters(in: .whitespaces).isEmpty else {
+                showAlert(message: "Введите имя перед началом игры.", clearField: true)
+                return
+            }
+
+            let regex = "^[A-Za-z]+$"
+            let isValid = NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: name)
+
+            guard isValid else {
+                showAlert(message: "Имя должно состоять только из латинских букв.", clearField: true)
+                return
+            }
+
+            if modeSegment.selectedSegmentIndex == 0 {
+                guard let opponent = opponentNameTextField.text, !opponent.trimmingCharacters(in: .whitespaces).isEmpty else {
+                    showAlert(message: "Введите имя второго игрока.", clearField: true)
+                    return
+                }
+                let isOpponentValid = NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: opponent)
+                guard isOpponentValid else {
+                    showAlert(message: "Имя второго игрока должно состоять только из латинских букв.", clearField: true)
+                    return
+                }
+            }
+
+            performSegue(withIdentifier: "showGameFromNewGame", sender: self)
+    }
+    @IBAction func modeChanged(_ sender: UISegmentedControl) {
+        let isMultiplayerMode = sender.selectedSegmentIndex == 0
+        opponentNameTextField.isHidden = !isMultiplayerMode
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showGameFromNewGame",
              let gameVC = segue.destination as? GameViewController {
@@ -42,23 +80,6 @@ final class NewGameViewController: UIViewController {
                 
             
         }
-    }
-    
-    @IBAction func startGameTapped(_ sender: UIButton) {
-        guard let name = nameTextField.text, !name.isEmpty else {
-            showAlert(message: "Введите имя перед началом игры.", clearField: true)
-        return
-        }
-        
-        let regex = "^[A-Za-z]+$"
-        let isValid = NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: name)
-        
-        guard isValid else {
-            showAlert(message: "Имя должно состоять только из латинских букв.", clearField: true)
-            return
-        }
-        
-        performSegue(withIdentifier: "showGameFromNewGame", sender: self)
     }
     
     private func showAlert(message: String, clearField: Bool = false) {

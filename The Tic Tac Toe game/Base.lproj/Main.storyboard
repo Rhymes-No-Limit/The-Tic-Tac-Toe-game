@@ -97,7 +97,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="startGameTapped:" destination="xYY-Jk-3VK" eventType="touchUpInside" id="xtn-sS-6hW"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="showGameFromNewGame" animates="NO" modalPresentationStyle="fullScreen" id="gHE-dr-rOS"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6a1-UX-69m">
@@ -106,7 +105,15 @@
                                     <segment title="Против игрока"/>
                                     <segment title="Против бота"/>
                                 </segments>
+                                <connections>
+                                    <action selector="modeChanged:" destination="xYY-Jk-3VK" eventType="valueChanged" id="6QV-Ve-skF"/>
+                                </connections>
                             </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите имя второго игрока" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DGO-gU-ofV">
+                                <rect key="frame" x="16" y="357" width="361" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RWj-Ut-xMr"/>
                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
@@ -114,12 +121,15 @@
                             <constraint firstItem="RWj-Ut-xMr" firstAttribute="trailing" secondItem="HbR-Da-oAt" secondAttribute="trailing" constant="16" id="1mc-D4-mzi"/>
                             <constraint firstItem="fBN-Xj-hEL" firstAttribute="centerX" secondItem="gqv-P4-vxE" secondAttribute="centerX" id="34M-XH-xac"/>
                             <constraint firstItem="VTP-Kl-Mef" firstAttribute="bottom" secondItem="RWj-Ut-xMr" secondAttribute="bottom" constant="10" id="7UR-zz-gZU"/>
+                            <constraint firstItem="RWj-Ut-xMr" firstAttribute="trailing" secondItem="DGO-gU-ofV" secondAttribute="trailing" constant="16" id="7XY-jE-Odd"/>
                             <constraint firstItem="HbR-Da-oAt" firstAttribute="leading" secondItem="RWj-Ut-xMr" secondAttribute="leading" constant="16" id="8oK-c1-MLj"/>
                             <constraint firstItem="HbR-Da-oAt" firstAttribute="top" secondItem="fBN-Xj-hEL" secondAttribute="bottom" constant="200" id="Epi-Ww-xJR"/>
                             <constraint firstItem="fBN-Xj-hEL" firstAttribute="top" secondItem="RWj-Ut-xMr" secondAttribute="top" constant="15" id="TY5-iU-XC7"/>
                             <constraint firstItem="HbR-Da-oAt" firstAttribute="centerX" secondItem="gqv-P4-vxE" secondAttribute="centerX" id="UQU-IU-774"/>
                             <constraint firstItem="VTP-Kl-Mef" firstAttribute="top" secondItem="6a1-UX-69m" secondAttribute="bottom" constant="86" id="cnD-Db-94N"/>
                             <constraint firstItem="6a1-UX-69m" firstAttribute="centerX" secondItem="gqv-P4-vxE" secondAttribute="centerX" id="jsa-RN-IJD"/>
+                            <constraint firstItem="DGO-gU-ofV" firstAttribute="top" secondItem="HbR-Da-oAt" secondAttribute="bottom" constant="8" symbolic="YES" id="ru0-EN-cXx"/>
+                            <constraint firstItem="DGO-gU-ofV" firstAttribute="leading" secondItem="RWj-Ut-xMr" secondAttribute="leading" constant="16" id="ubO-HE-byX"/>
                             <constraint firstItem="RWj-Ut-xMr" firstAttribute="trailing" secondItem="VTP-Kl-Mef" secondAttribute="trailing" constant="136" id="wVY-sR-hwb"/>
                             <constraint firstItem="VTP-Kl-Mef" firstAttribute="leading" secondItem="RWj-Ut-xMr" secondAttribute="leading" constant="136" id="zLb-WA-KBO"/>
                         </constraints>
@@ -128,6 +138,8 @@
                     <connections>
                         <outlet property="modeSegment" destination="6a1-UX-69m" id="HGb-VZ-CeJ"/>
                         <outlet property="nameTextField" destination="HbR-Da-oAt" id="mei-Wu-R7X"/>
+                        <outlet property="opponentNameTextField" destination="DGO-gU-ofV" id="PAX-dQ-pc9"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="showGameFromNewGame" animates="NO" modalPresentationStyle="fullScreen" id="sFi-Mx-pH6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwq-hy-kNZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
