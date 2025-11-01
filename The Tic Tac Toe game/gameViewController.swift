@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
     var remainingTime = 10
     var playerName: String?
     var isPlayingWithBot: Bool = false
+    var lastWinner: String? = nil
     
     // MARK: - lifecycle
     
@@ -79,7 +80,14 @@ class GameViewController: UIViewController {
         game = GameModel()
         buttons.forEach { $0.setTitle("", for: .normal); $0.isEnabled = true }
         
+        if let winner = lastWinner {
+            game.currentPlayer = winner
+        } else {
+            game.currentPlayer = "X"
+        }
+        
         remainingTime = 10
+        updateCurrentPlayerLabel()
         startTurnTimer()
     }
     
@@ -105,6 +113,7 @@ class GameViewController: UIViewController {
     
     private func switchTurnDueToTimer() {
         game.currentPlayer = game.currentPlayer == "X" ? "O" : "X"
+        updateCurrentPlayerLabel()
         startTurnTimer()
     }
     
@@ -118,6 +127,9 @@ class GameViewController: UIViewController {
     
     private func showWinnerAlert(_ winner: String) {
         turnTimer?.invalidate()
+        
+        lastWinner = winner
+        
         if winner == "X" {
             xScore += 1
         } else {
