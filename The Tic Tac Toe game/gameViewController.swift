@@ -19,6 +19,7 @@ class GameViewController: UIViewController {
     var turnTimer: Timer?
     var remainingTime = 10
     var playerName: String?
+    var opponentName: String? 
     var isPlayingWithBot: Bool = false
     var lastWinner: String? = nil
     
@@ -28,6 +29,8 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         startTurnTimer()
         updateCurrentPlayerLabel()
+        
+        print(opponentName ?? "nil")
         
     }
     
@@ -167,20 +170,26 @@ class GameViewController: UIViewController {
     
     private func updateScoreLabels() {
         let playerDisplayName = playerName ?? "Игрок"
-        let opponentName = isPlayingWithBot ? "Бот" : "Игрок 2"
+        let opponentDisplayName: String
+        
+        if isPlayingWithBot {
+            opponentDisplayName = "Бот"
+        } else {
+            opponentDisplayName = opponentName ?? "Игрок 2"
+        }
         
         xScoreLabel.text = "\(playerDisplayName): \(xScore)"
-        oScoreLabel.text = "\(opponentName): \(oScore)"
+        oScoreLabel.text = "\(opponentDisplayName): \(oScore)"
     }
     
     private func updateCurrentPlayerLabel() {
         let playerDisplayName = playerName ?? "Игрок"
-        let opponentName = isPlayingWithBot ? "Бот" : "Игрок 2"
+        let opponentDisplayName = isPlayingWithBot ? "Бот" : (opponentName ?? "Игрок 2")
         
         if game.currentPlayer == "X" {
             currentPlayerLabel.text = "Ход: \(playerDisplayName)"
         } else {
-            currentPlayerLabel.text = "Ход: \(opponentName)"
+            currentPlayerLabel.text = "Ход: \(opponentDisplayName)"
         }
     }
 

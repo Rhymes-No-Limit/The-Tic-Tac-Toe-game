@@ -69,16 +69,20 @@ final class NewGameViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showGameFromNewGame",
-             let gameVC = segue.destination as? GameViewController {
-                
+           let gameVC = segue.destination as? GameViewController {
+
             let trimmedName = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
             gameVC.playerName = trimmedName.isEmpty ? "Игрок" : trimmedName
             gameVC.isPlayingWithBot = modeSegment.selectedSegmentIndex == 1
-            
-            gameVC.title = "\(gameVC.playerName!) vc \(gameVC.isPlayingWithBot ? "Бот" : "Игрок 2")"
-            
-                
-            
+
+            if !gameVC.isPlayingWithBot {
+                let trimmedOpponent = opponentNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+                gameVC.opponentName = trimmedOpponent.isEmpty ? "Игрок 2" : trimmedOpponent
+            } else {
+                gameVC.opponentName = "Бот"
+            }
+
+            gameVC.title = "\(gameVC.playerName!) vs \(gameVC.opponentName!)"
         }
     }
     
@@ -87,6 +91,7 @@ final class NewGameViewController: UIViewController {
         let action = UIAlertAction(title: "Ок", style: .default) { [weak self] _ in
             if clearField {
                 self?.nameTextField.text = ""
+                self?.opponentNameTextField.text = ""
             }
         }
         
