@@ -2,10 +2,10 @@ import Foundation
 
 struct BotLogic {
     
-    enum Difficulty {
-        case easy
-        case medium
-        case hard
+    enum Difficulty: Int {
+        case easy = 0
+        case medium = 1
+        case hard = 2
     }
 
     static func makeMove(on board: [String], difficulty: Difficulty) -> Int? {

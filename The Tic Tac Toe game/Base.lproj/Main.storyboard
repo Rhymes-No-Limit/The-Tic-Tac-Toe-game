@@ -41,7 +41,7 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="settings:" destination="eFe-N1-659" eventType="touchUpInside" id="dht-Ba-QRd"/>
-                                            <segue destination="Yme-YK-Eeb" kind="presentation" identifier="showSettings" modalPresentationStyle="fullScreen" id="v6M-bO-7Ae"/>
+                                            <segue destination="Yme-YK-Eeb" kind="presentation" identifier="showSettings" animates="NO" modalPresentationStyle="fullScreen" id="v6M-bO-7Ae"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lz-gc-Z4C">
@@ -89,7 +89,7 @@
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="backButton:" destination="Yme-YK-Eeb" eventType="touchUpInside" id="ExF-sR-LuO"/>
+                                    <action selector="backButton:" destination="Yme-YK-Eeb" eventType="touchUpInside" id="V6T-sz-YYk"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Уровень сложности" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hsd-9w-dCm">
@@ -106,7 +106,7 @@
                                     <segment title="Тяжелый"/>
                                 </segments>
                                 <connections>
-                                    <action selector="difficultySegmentTap:" destination="Yme-YK-Eeb" eventType="valueChanged" id="o89-9Z-YJJ"/>
+                                    <action selector="difficultySegmentTap:" destination="Yme-YK-Eeb" eventType="valueChanged" id="IXk-o0-CXf"/>
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WtF-zj-yAC">
@@ -118,7 +118,7 @@
                                     <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="safeButtonTapped:" destination="Yme-YK-Eeb" eventType="touchUpInside" id="jcf-7g-fPr"/>
+                                    <action selector="saveButtonTapped:" destination="Yme-YK-Eeb" eventType="touchUpInside" id="k9X-Eq-Eyn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -136,6 +136,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="hr6-6u-XLQ"/>
+                    <connections>
+                        <outlet property="difficultySegment" destination="PrP-6m-am0" id="0Ug-wO-VIM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GcM-OJ-acw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -378,7 +381,7 @@
                                     <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="eFe-N1-659" kind="presentation" modalPresentationStyle="fullScreen" id="390-9F-c8L"/>
+                                    <segue destination="eFe-N1-659" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="390-9F-c8L"/>
                                 </connections>
                             </button>
                         </subviews>
