@@ -41,6 +41,7 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="settings:" destination="eFe-N1-659" eventType="touchUpInside" id="dht-Ba-QRd"/>
+                                            <segue destination="Yme-YK-Eeb" kind="presentation" identifier="showSettings" modalPresentationStyle="fullScreen" id="v6M-bO-7Ae"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lz-gc-Z4C">
@@ -64,10 +65,81 @@
                             <constraint firstItem="Ap4-7C-hfO" firstAttribute="centerX" secondItem="pfG-Y1-JII" secondAttribute="centerX" id="kmY-VF-3Ll"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="qYu-RT-s0E"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxK-ZC-JVZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-570.2290076335878" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="356.48854961832058" y="-2.1126760563380285"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="79C-K9-YMG">
+            <objects>
+                <viewController id="Yme-YK-Eeb" customClass="SettingsViewController" customModule="The_Tic_Tac_Toe_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cla-Vr-une">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9AH-ZM-6jx">
+                                <rect key="frame" x="16" y="69" width="49" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9AH-ZM-6jx" secondAttribute="height" multiplier="49:53" id="02C-Bp-kxC"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backButton:" destination="Yme-YK-Eeb" eventType="touchUpInside" id="ExF-sR-LuO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Уровень сложности" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hsd-9w-dCm">
+                                <rect key="frame" x="16" y="152" width="361" height="34"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PrP-6m-am0">
+                                <rect key="frame" x="16" y="224" width="361" height="32"/>
+                                <segments>
+                                    <segment title="Легкий"/>
+                                    <segment title="Средний"/>
+                                    <segment title="Тяжелый"/>
+                                </segments>
+                                <connections>
+                                    <action selector="difficultySegmentTap:" destination="Yme-YK-Eeb" eventType="valueChanged" id="o89-9Z-YJJ"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WtF-zj-yAC">
+                                <rect key="frame" x="142" y="783" width="110" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Сохранить">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="safeButtonTapped:" destination="Yme-YK-Eeb" eventType="touchUpInside" id="jcf-7g-fPr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sFy-6G-opR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hsd-9w-dCm" firstAttribute="leading" secondItem="sFy-6G-opR" secondAttribute="leading" constant="16" id="1Da-2d-gd9"/>
+                            <constraint firstItem="sFy-6G-opR" firstAttribute="trailing" secondItem="PrP-6m-am0" secondAttribute="trailing" constant="16" id="1I6-ou-B00"/>
+                            <constraint firstItem="sFy-6G-opR" firstAttribute="trailing" secondItem="hsd-9w-dCm" secondAttribute="trailing" constant="16" id="A6U-aE-Fht"/>
+                            <constraint firstItem="PrP-6m-am0" firstAttribute="leading" secondItem="sFy-6G-opR" secondAttribute="leading" constant="16" id="RjN-Gb-th0"/>
+                            <constraint firstItem="9AH-ZM-6jx" firstAttribute="leading" secondItem="sFy-6G-opR" secondAttribute="leading" constant="16" id="bJT-rX-4PA"/>
+                            <constraint firstItem="hsd-9w-dCm" firstAttribute="top" secondItem="9AH-ZM-6jx" secondAttribute="bottom" constant="30" id="e80-Io-rk2"/>
+                            <constraint firstItem="PrP-6m-am0" firstAttribute="top" secondItem="hsd-9w-dCm" secondAttribute="bottom" constant="38" id="sKr-IM-6Ea"/>
+                            <constraint firstItem="9AH-ZM-6jx" firstAttribute="top" secondItem="sFy-6G-opR" secondAttribute="top" constant="10" id="zYX-FI-vVk"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="hr6-6u-XLQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GcM-OJ-acw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="362.59541984732823" y="669.71830985915494"/>
         </scene>
         <!--New Game View Controller-->
         <scene sceneID="Uuo-uq-OMJ">
@@ -144,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwq-hy-kNZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-567.17557251908397" y="680.98591549295782"/>
+            <point key="canvasLocation" x="1223.6641221374045" y="-2.1126760563380285"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -306,7 +378,7 @@
                                     <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="eFe-N1-659" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="4lV-14-y9t"/>
+                                    <segue destination="eFe-N1-659" kind="presentation" modalPresentationStyle="fullScreen" id="390-9F-c8L"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -348,10 +420,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="112.21374045801527" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="2040.4580152671756" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
