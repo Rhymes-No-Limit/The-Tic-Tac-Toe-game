@@ -81,7 +81,8 @@ class GameViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
                 guard let self = self else { return }
                 
-                if let botMoveIndex = BotLogic.makeMove(on: self.game.board, difficulty: .easy) {
+                let boatSymbol = self.game.currentPlayer
+                if let botMoveIndex = BotLogic.makeMove(on: self.game.board, botSymbol: boatSymbol, difficulty: .easy) {
                     let botButton = self.buttons[botMoveIndex]
                     self.handleMove(botButton)
                 }
