@@ -11,11 +11,13 @@ struct BotLogic {
         case .easy:
             return makeRandomMove(on: board)
         case .medium:
-            return makeMediumMove(on: board, botSymbol: botSymbol)
+            return makeMediumMove(on: board)
         case .hard:
-            return makeRandomMove(on: board)
+            return makeHardMove(on: board)
         }
     }
+
+    // MARK: - Easy
 
     private static func makeRandomMove(on board: [String]) -> Int? {
         let emptyIndices = board.enumerated()
@@ -25,35 +27,88 @@ struct BotLogic {
         return emptyIndices.randomElement()
     }
 
-    private static func makeMediumMove(on board: [String], botSymbol: String) -> Int? {
+    // MARK: - Medium
+
+    private static func makeMediumMove(on board: [String]) -> Int? {
         var tempBoard = board
-        let playerSymbol = botSymbol == "X" ? "O" : "X"
-
-        // 1️⃣ Проверка: можно ли выиграть самому
-        for i in 0..<tempBoard.count {
-            if tempBoard[i].isEmpty {
-                tempBoard[i] = botSymbol
-                if checkWinner(on: tempBoard) == botSymbol {
-                    return i
-                }
-                tempBoard[i] = ""
-            }
+        
+        // 1. Попробовать выиграть
+        for i in 0..<tempBoard.count where tempBoard[i].isEmpty {
+            tempBoard[i] = "O"
+            if checkWinner(on: tempBoard) == "O" { return i }
+            tempBoard[i] = ""
         }
-
-        // 2️⃣ Проверка: можно ли заблокировать игрока
-        for i in 0..<tempBoard.count {
-            if tempBoard[i].isEmpty {
-                tempBoard[i] = playerSymbol
-                if checkWinner(on: tempBoard) == playerSymbol {
-                    return i
-                }
-                tempBoard[i] = ""
-            }
+        
+        // 2. Заблокировать игрока
+        for i in 0..<tempBoard.count where tempBoard[i].isEmpty {
+            tempBoard[i] = "X"
+            if checkWinner(on: tempBoard) == "X" { return i }
+            tempBoard[i] = ""
         }
-
-        // 3️⃣ Иначе — случайный ход
+        
+        // 3. Если ничего — случайный ход
         return makeRandomMove(on: board)
     }
+
+    // MARK: - Hard (умный Minimax + приоритеты)
+
+    private static func makeHardMove(on board: [String]) -> Int? {
+        var bestScore = Int.min
+        var move: Int? = nil
+
+        for i in 0..<board.count where board[i].isEmpty {
+            var tempBoard = board
+            tempBoard[i] = "O"
+            let score = minimax(board: tempBoard, depth: 0, isMaximizing: false, alpha: Int.min, beta: Int.max)
+            
+            if score > bestScore {
+                bestScore = score
+                move = i
+            }
+        }
+        return move
+    }
+
+    // MARK: - Minimax Algorithm with Alpha-Beta Pruning
+
+    private static func minimax(board: [String], depth: Int, isMaximizing: Bool, alpha: Int, beta: Int) -> Int {
+        if let winner = checkWinner(on: board) {
+            switch winner {
+            case "O": return 10 - depth
+            case "X": return depth - 10
+            default: return 0
+            }
+        }
+        
+        if !board.contains("") {
+            return 0
+        }
+        
+        var alpha = alpha
+        var beta = beta
+        var bestScore = isMaximizing ? Int.min : Int.max
+        
+        for i in 0..<board.count where board[i].isEmpty {
+            var tempBoard = board
+            tempBoard[i] = isMaximizing ? "O" : "X"
+            
+            let score = minimax(board: tempBoard, depth: depth + 1, isMaximizing: !isMaximizing, alpha: alpha, beta: beta)
+            
+            if isMaximizing {
+                bestScore = max(bestScore, score)
+                alpha = max(alpha, score)
+            } else {
+                bestScore = min(bestScore, score)
+                beta = min(beta, score)
+            }
+            
+            if beta <= alpha { break }
+        }
+        
+        return bestScore
+    }
+
+    // MARK: - Check Winner
 
     private static func checkWinner(on board: [String]) -> String? {
         let winningCombinations = [

@@ -22,6 +22,7 @@ class GameViewController: UIViewController {
     var opponentName: String? 
     var isPlayingWithBot: Bool = false
     var lastWinner: String? = nil
+    var borDifficulty: BotLogic.Difficulty = .easy
     
     // MARK: - lifecycle
     
@@ -78,11 +79,10 @@ class GameViewController: UIViewController {
         startTurnTimer()
         
         if isPlayingWithBot && game.currentPlayer == "O" {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
                 guard let self = self else { return }
-                
-                let boatSymbol = self.game.currentPlayer
-                if let botMoveIndex = BotLogic.makeMove(on: self.game.board, botSymbol: boatSymbol, difficulty: .easy) {
+                let botSymbol = self.game.currentPlayer
+                if let botMoveIndex = BotLogic.makeMove(on: self.game.board, botSymbol: botSymbol, difficulty: self.borDifficulty) {
                     let botButton = self.buttons[botMoveIndex]
                     self.handleMove(botButton)
                 }
@@ -104,6 +104,17 @@ class GameViewController: UIViewController {
         remainingTime = 10
         updateCurrentPlayerLabel()
         startTurnTimer()
+        
+        if isPlayingWithBot && game.currentPlayer == "O" {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
+                guard let self = self else { return }
+                let botSymbol = self.game.currentPlayer
+                if let botMoveIndex = BotLogic.makeMove(on: self.game.board, botSymbol: botSymbol, difficulty: self.borDifficulty) {
+                    let botButton = self.buttons[botMoveIndex]
+                    self.handleMove(botButton)
+                }
+            }
+        }
     }
     
     //MARK: - Timer
